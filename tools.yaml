@@ -1,0 +1,8 @@
+---
+debug : False                                                      # will toggle the debug prints
+desk1:
+  - https://pg-nz.slack.com/
+  - https://pro.trackingtime.co/#/hours
+desk2:
+  - https://github.com/real-4w/
+  

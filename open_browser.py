@@ -1,7 +1,7 @@
 import webbrowser
 
 websites = [
-'https://app.slack.com/client/T39KSQ3D4/D39L42007',
+'https://pg-nz.slack.com/',
 'https://github.com/real-4w/',
 ]
 
