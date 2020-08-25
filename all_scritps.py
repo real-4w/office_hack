@@ -30,10 +30,15 @@ if __name__ == "__main__":                                                    #o
     for website in desk1 :
         webbrowser.open_new(website)
 
-#needs to go to yaml file
+    time.sleep(1)                                              #only 5 calls per min allowed
+
+    #needs to go to yaml file
     command_lines = [
     "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
     ]
+    for command_line in command_lines :
+        command_line = "\"" + command_line + "\""
+        subprocess.Popen(shlex.split(command_line))
 
     for website in desk2 :
         webbrowser.open_new(website)
