@@ -15,7 +15,7 @@ def launch_apps_to_virtual_desktops(command_lines, desktops=3):
         time.sleep(2) # Wait for apps to open their windows
     virtual_desktop_accessor.GoToDesktopNumber(0) # Go back to the 1st desktop
 
-command_lines = r"""
+command_lines = """
 "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 "C:\Program Files (x86)\Internet Explorer\iexplore.exe"
 """.splitlines()
