@@ -3,6 +3,7 @@ debug : False                                                      # will toggle
 desk1:
   - https://pg-nz.slack.com/
   - https://pro.trackingtime.co/#/hours
+  - https://trello.com/willemvandersteen/boards
 desk2:
   - https://github.com/real-4w/
   - https://mail.google.com/mail/u/0/#inbox
