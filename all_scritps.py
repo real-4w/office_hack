@@ -1,6 +1,7 @@
 import webbrowser
 import yaml
 import ctypes, time, shlex, subprocess
+from cli_badges import badge
 #===========================================================================================================
 def ProcessYAML (yaml_file) :
     '''This function opens the yaml file and returns the data object'''
@@ -29,7 +30,7 @@ if __name__ == "__main__":                                                    #o
             webbrowser.open_new(website)
             time.sleep(1)                                                       #wait for execs to fire up
 #====== WIP Need to workout how to open new virtual desktop
-    command_line = "\"" + execs[0] + "\""                                       #this is antoher browser
+    command_line = "\"" + execs[0] + "\""                                       #this is another browser instance
     if debug == True : 
         print (command_line)
     else : 
@@ -37,3 +38,6 @@ if __name__ == "__main__":                                                    #o
         time.sleep(1)                                                           #wait for execs to fire up
     for website in desk2 :
         if debug == False : webbrowser.open_new(website)
+    Desk1Badge = badge("Browser 1 URL opened",str(len(desk1)), messagebg='green',messagecolor='black')
+    Desk2Badge = badge("Browser 2 URL opened",str(len(desk2)), messagebg='blue')
+    print(Desk1Badge, Desk2Badge)
