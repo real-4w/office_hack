@@ -19,16 +19,21 @@ if __name__ == "__main__":                                                    #o
     execs = yaml_data['execs']
     for command_line in execs : 
         command_line = "\"" + command_line + "\""
-        if debug == True : print (command_line)
-        subprocess.Popen(shlex.split(command_line))
-    time.sleep(1)                                                               #wait for execs to fire up
+        if debug == True : 
+            print (command_line)
+        else : 
+            subprocess.Popen(shlex.split(command_line))
+            time.sleep(1)                                                       #wait for execs to fire up
     for website in desk1 :
-        webbrowser.open_new(website)
-    time.sleep(1)                                                               #wait for execs to fire up
+        if debug == False : 
+            webbrowser.open_new(website)
+            time.sleep(1)                                                       #wait for execs to fire up
 #====== WIP Need to workout how to open new virtual desktop
     command_line = "\"" + execs[0] + "\""                                       #this is antoher browser
-    if debug == True : print (command_line)
-    subprocess.Popen(shlex.split(command_line))
-    time.sleep(1)                                                               #wait for execs to fire up
+    if debug == True : 
+        print (command_line)
+    else : 
+        subprocess.Popen(shlex.split(command_line))
+        time.sleep(1)                                                           #wait for execs to fire up
     for website in desk2 :
-        webbrowser.open_new(website)
+        if debug == False : webbrowser.open_new(website)
