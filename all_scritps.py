@@ -1,5 +1,6 @@
 import webbrowser
 import yaml
+import time
 import ctypes, time, shlex, subprocess
 from cli_badges import badge
 #===========================================================================================================
@@ -41,3 +42,4 @@ if __name__ == "__main__":                                                    #o
     Desk1Badge = badge("Browser 1 URL opened",str(len(desk1)), messagebg='green',messagecolor='black')
     Desk2Badge = badge("Browser 2 URL opened",str(len(desk2)), messagebg='blue')
     print(Desk1Badge, Desk2Badge)
+    time.sleep(5)    
