@@ -8,7 +8,10 @@ desk2:
   - https://github.com/real-4w/
   - https://mail.google.com/mail/u/0/#inbox
   - https://outlook.live.com/mail/0/inbox
-execs:
-  - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe           # browser should be the first entry
+execs1:
+  - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe           
   - C:\Program Files (x86)\Microsoft Office\Office16\OUTLOOK.EXE
+execs2:
+    - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    - C:\Users\vandersw\AppData\Local\Programs\Microsoft VS Code\Code.exe
   

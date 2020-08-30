@@ -14,15 +14,16 @@ yaml_data = ProcessYAML('tools.yaml')                                     #yaml 
 debug = yaml_data['debug']                                                #debug mode?
 #===========================================================================================================
 if __name__ == "__main__":                                                    #only run when this is called by itself and not imported 
-    desk1 = yaml_data['desk1']
-    desk2 = yaml_data['desk2']
-    execs = yaml_data['execs']
     desktops = w_vda.get_desktop_count()
     if debug == True : print(f"Number of desktops is: {desktops}.")
     if (desktops ==  1) : 
         print("Script requires at least 2 virtual desktops open.") 
         exit(1)
-    for command_line in execs : 
+    desk1 = yaml_data['desk1']
+    desk2 = yaml_data['desk2']
+    execs1 = yaml_data['execs1']
+    execs2 = yaml_data['execs2']
+    for command_line in execs1 : 
         command_line = "\"" + command_line + "\""
         if debug == True : 
             print (command_line)
@@ -34,11 +35,12 @@ if __name__ == "__main__":                                                    #o
 #====== WIP Need to workout how to open new virtual desktop
     time.sleep(1)
     w_vda.go_to_desktop_number(1)
-    command_line = "\"" + execs[0] + "\""                                       #this is another browser instance
-    if debug == True : 
-        print (command_line)
-    else : 
-        subprocess.Popen(shlex.split(command_line))
+    for command_line in execs2 : 
+        command_line = "\"" + command_line + "\""                                       #this is another browser instance
+        if debug == True : 
+            print (command_line)
+        else : 
+            subprocess.Popen(shlex.split(command_line))
     for website in desk2 :
         if debug == False : webbrowser.open_new(website)
     time.sleep(1)
