@@ -1,18 +1,9 @@
 # https://github.com/Ciantic/VirtualDesktopAccessor
 # dllmain.h
-
 import os
-import ctypes
+import ctypes, time
 from ctypes import cdll
-
-
-#from ctypes import wintypes
-
-
-
-#import win32gui
-#use 32 bit python
-
+from time import sleep
 path = os.path.dirname(os.path.realpath(__file__)) 
 vda = cdll.LoadLibrary(os.path.join(path,'VirtualDesktopAccessor.dll'))
 
@@ -51,17 +42,20 @@ def go_to_desktop_number(n=0):
 #    vda.MoveWindowToDesktopNumber(wndh,n)
 #    if follow:
 #        vda.GoToDesktopNumber(n)
+if __name__ == "__main__":                                                    #only run when this is called by itself and not imported 
+    print(get_desktop_count())
+    print(get_current_desktop_number())
 
-print(path)
-print(get_desktop_count())
-print(get_current_desktop_number())
+   
 
+    go_to_desktop_number(0)
+    print ("desktop 0")
+    sleep(3)
 
-user32 = ctypes.windll.user32
+    go_to_desktop_number(1)
+    print ("desktop 1")
+    sleep(3)
 
-h_wnd = user32.GetForegroundWindow()
 #pid = wintypes.DWORD()
 #user32.GetWindowThreadProcessId(h_wnd, ctypes.byref(pid))
 #print(pid.value)
-
-vda.MoveWindowToDesktopNumber(h_wnd, 1)
