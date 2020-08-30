@@ -1,3 +1,4 @@
+#use 32 bit python
 #https://github.com/mrob95/py-VirtualDesktopAccessor
 import pyvda
 import win32gui

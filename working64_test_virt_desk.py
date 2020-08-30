@@ -2,8 +2,16 @@
 # dllmain.h
 
 import os
+import ctypes
 from ctypes import cdll
-import win32gui
+
+
+#from ctypes import wintypes
+
+
+
+#import win32gui
+#use 32 bit python
 
 path = os.path.dirname(os.path.realpath(__file__)) 
 vda = cdll.LoadLibrary(os.path.join(path,'VirtualDesktopAccessor.dll'))
@@ -38,8 +46,22 @@ def get_desktop_count():
 def go_to_desktop_number(n=0):
     vda.GoToDesktopNumber(n)
 
-def move_current_window_to_desktop(n=0,follow=True):
-    wndh = win32gui.GetForegroundWindow()   
-    vda.MoveWindowToDesktopNumber(wndh,n)
-    if follow:
-        vda.GoToDesktopNumber(n)
+# def move_current_window_to_desktop(n=0,follow=True):
+#    wndh = win32gui.GetForegroundWindow()   
+#    vda.MoveWindowToDesktopNumber(wndh,n)
+#    if follow:
+#        vda.GoToDesktopNumber(n)
+
+print(path)
+print(get_desktop_count())
+print(get_current_desktop_number())
+
+
+user32 = ctypes.windll.user32
+
+h_wnd = user32.GetForegroundWindow()
+#pid = wintypes.DWORD()
+#user32.GetWindowThreadProcessId(h_wnd, ctypes.byref(pid))
+#print(pid.value)
+
+vda.MoveWindowToDesktopNumber(h_wnd, 1)

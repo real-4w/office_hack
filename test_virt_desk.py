@@ -1,5 +1,4 @@
-#not working
-
+#use 64 bit python
 #uses https://github.com/Ciantic/VirtualDesktopAccessor/blob/master/x64/Release/VirtualDesktopAccessor.dll
 #https://stackoverflow.com/questions/60879235/python-windows-10-launching-an-application-on-a-specific-virtual-desktop-envir
 
