@@ -1,5 +1,5 @@
 import webbrowser, yaml, time,ctypes, time, shlex, subprocess
-import w_vda
+import w_vda, win32gui
 from cli_badges import badge
 #===========================================================================================================
 def ProcessYAML (yaml_file) :
@@ -24,7 +24,7 @@ if __name__ == "__main__":                                                    #o
     desk2 = yaml_data['desk2']
     execs1 = yaml_data['execs1']
     execs2 = yaml_data['execs2']
-    w_vda.go_to_desktop_number(1)                                                   #first do desk 2
+    w_vda.go_to_desktop_number(1)                                                   #first do desk 2 - gives warnings
     time.sleep(1)
     for command_line in execs2 : 
         command_line = "\"" + command_line + "\""                                   
@@ -35,7 +35,9 @@ if __name__ == "__main__":                                                    #o
     for website in desk2 :
         if debug == False : webbrowser.open_new(website)
     time.sleep(1)
-    w_vda.go_to_desktop_number(0)                                                   #now do desk 1
+    # current_window_handle = win32gui.GetForegroundWindow()
+    # move_window_to_desktop_number(current_window_handle,0):
+    w_vda.go_to_desktop_number(0)                                                   #now do desk 1 - gives warnings
     time.sleep(1)
     for command_line in execs1 : 
         command_line = "\"" + command_line + "\""
