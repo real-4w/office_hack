@@ -6,5 +6,7 @@ command_lines = [
 ]
 
 for command_line in command_lines :
+    print(command_line)
     command_line = "\"" + command_line + "\""
+    print(command_line)
     subprocess.Popen(shlex.split(command_line))
