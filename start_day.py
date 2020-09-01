@@ -24,21 +24,9 @@ if __name__ == "__main__":                                                    #o
     desk2 = yaml_data['desk2']
     execs1 = yaml_data['execs1']
     execs2 = yaml_data['execs2']
-    w_vda.go_to_desktop_number(1)                                                   #first do desk 2 - gives warnings
-    time.sleep(1)
-    for command_line in execs2 : 
-        command_line = "\"" + command_line + "\""                                   
-        if debug == True : 
-            print (command_line)
-        else : 
-            subprocess.Popen(shlex.split(command_line))
-    for website in desk2 :
-        if debug == False : webbrowser.open_new(website)
-    time.sleep(1)
-    # current_window_handle = win32gui.GetForegroundWindow()
-    # move_window_to_desktop_number(current_window_handle,0):
+    if debug == True : print(f"Going to desk 0.")
+    
     w_vda.go_to_desktop_number(0)                                                   #now do desk 1 - gives warnings
-    time.sleep(1)
     for command_line in execs1 : 
         command_line = "\"" + command_line + "\""
         if debug == True : 
@@ -49,6 +37,25 @@ if __name__ == "__main__":                                                    #o
         if debug == False : 
             webbrowser.open_new(website)
     time.sleep(1)
+    # now prep desk 2
+    for command_line in execs2 : 
+        command_line = "\"" + command_line + "\""                                   
+        if debug == True : 
+            print (command_line)
+        else : 
+            subprocess.Popen(shlex.split(command_line))
+            current_window_handle = win32gui.GetForegroundWindow()
+            w_vda.move_window_to_desktop_number(current_window_handle,1)             #open en then move to desk 2
+            time.sleep(1)
+    
+    w_vda.go_to_desktop_number(1)                                                   #now do desk 2 - gives warnings
+    time.sleep(1)
+    for website in desk2 :
+        if debug == False : webbrowser.open_new(website)
+    time.sleep(1)
+    w_vda.go_to_desktop_number(0)                                                   #now do desk 0 - gives warnings
+    time.sleep(1)
+        
     Desk1Badge = badge("Browser 1 URLs opened",str(len(desk1)), messagebg='green',messagecolor='black')
     Desk2Badge = badge("Browser 2 URLs opened",str(len(desk2)), messagebg='blue')
     print(Desk1Badge, Desk2Badge)

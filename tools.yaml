@@ -9,9 +9,9 @@ desk2:
   - https://mail.google.com/mail/u/0/#inbox
   - https://outlook.live.com/mail/0/inbox
 execs1:
-  - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe           
   - C:\Program Files (x86)\Microsoft Office\Office16\OUTLOOK.EXE
+  - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
 execs2:
-    - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    - C:\Users\vandersw\AppData\Local\Programs\Microsoft VS Code\Code.exe
+  - C:\Users\vandersw\AppData\Local\Programs\Microsoft VS Code\Code.exe
+  - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
   
