@@ -6,7 +6,7 @@ my_ip                   : Prints hostname and ip address
 open_browser.py         : Script to open pages on browser. URL's in script, see all_script.py for a yaml version
 run_exe.py              : Script to open windows executables
 start_day.py            : Launches a number of tabs in browsers &  fires a executbles up. Config in tools.yaml
-w_vda.py                : wrapper for 'VirtualDesktopAccessor.dll' || 64 bits python only
+w_vda.py                : Wrapper for 'VirtualDesktopAccessor.dll' || 64 bits python only
 
 WIP 
 test_move_win.py             : Move the active applicatoin between virtual desktops
