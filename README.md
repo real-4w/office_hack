@@ -1,10 +1,11 @@
 # office_hack
 Willem's office hacks, making life in the office easier:
 
-all_scripts.py          : Launches a number of tabs in browsers &  fires a executbles up. Config in tools.yaml
+look_up_dns             : Look up a DNS entry
 my_ip                   : Prints hostname and ip address
 open_browser.py         : Script to open pages on browser. URL's in script, see all_script.py for a yaml version
 run_exe.py              : Script to open windows executables
+start_day.py            : Launches a number of tabs in browsers &  fires a executbles up. Config in tools.yaml
 w_vda.py                : wrapper for 'VirtualDesktopAccessor.dll' || 64 bits python only
 
 WIP 
