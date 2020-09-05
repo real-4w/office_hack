@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 ############################################
-# Devploit . Version 3.1
+# Devploit . Version 3.x - amped up
 # Python version 3.7.3
-# Devploit - Information Gathering Tool
+# Based on Devploit - Information Gathering Tool
 ############################################
 import urllib, datetime, socket
 import sys, os, json
