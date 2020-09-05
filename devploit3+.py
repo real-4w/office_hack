@@ -215,7 +215,7 @@ def  select():
       fastprint("------------------------------------------------------")
       fastprint("Version : 3.x")
       fastprint("------------------------------------------------------")
-      fastprint("Author  : Mohamed Shafi & tweaks Real-4w")
+      fastprint("Author  : Real-4w")
       fastprint("------------------------------------------------------")
       ext() 
     elif joker == '100':
