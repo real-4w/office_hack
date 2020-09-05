@@ -1,6 +1,7 @@
 # office_hack
 Willem's office hacks, making life in the office easier:
 
+devploit3+.py           : Handy set of tools, based on the old devploit.py
 look_up_dns             : Look up a DNS entry
 my_ip                   : Prints hostname and ip address
 open_browser.py         : Script to open pages on browser. URL's in script, see all_script.py for a yaml version
