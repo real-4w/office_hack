@@ -4,20 +4,21 @@
 # Python version 3.7.3
 # Devploit - Information Gathering Tool
 ############################################
-import urllib
+import urllib, datetime, socket
 import sys, os, json
-import datetime
 import time as t
 from urllib.request import urlopen
 from os import system, name
-
-# define our clear function
-def clear():
+from requests import get
+#==============================================================================================================
+def WhatsMyIp():                                                                # get your IP address
+  ip = get('https://api.ipify.org').text
+  return(ip)
+def clear():                                                                    # define our clear function
     if name == 'nt':
         _ = system('cls')
     else:
         pass
-
 def slowprint(s):
     for c in s + '\n':
         sys.stdout.write(c)
@@ -28,42 +29,40 @@ def fastprint(s):
         sys.stdout.write(c)
         sys.stdout.flush()
         t.sleep(1. / 100)
-banner = '''
+#==============================================================================================================
+ip = WhatsMyIp()
+banner = f'''
 ██████╗ ███████╗██╗   ██╗██████╗ ██╗      ██████╗ ██╗████████╗
 ██╔══██╗██╔════╝██║   ██║██╔══██╗██║     ██╔═══██╗██║╚══██╔══╝
 ██║  ██║█████╗  ██║   ██║██████╔╝██║     ██║   ██║██║   ██║   
 ██║  ██║██╔══╝  ╚██╗ ██╔╝██╔═══╝ ██║     ██║   ██║██║   ██║   
 ██████╔╝███████╗ ╚████╔╝ ██║     ███████╗╚██████╔╝██║   ██║   
-╚═════╝ ╚══════╝  ╚═══╝  ╚═╝     ╚══════╝ ╚═════╝ ╚═╝   ╚═╝v3.1
-            Name   : Devploit for Python 3.7       
-            Version: 3.1+                          
-            Author : Shafi - https://shafis.in        
-            Github : https://github.com/SHAFIT  
-            Tweaks : Real_4w   
+╚═════╝ ╚══════╝  ╚═══╝  ╚═╝     ╚══════╝ ╚═════╝ ╚═╝   ╚═╝ Real-4w version.
+            Name   : Devploit for Python 3.7 running @ {ip}    
+            Version: Real-4w                     
 '''
 print (banner)
 def menu():
-   print ('''
+   print (f'''
 -------------------------------------------------------
-[x] Main Menu :
+[x] Main Menu for {ip}
 -------------------------------------------------------
-1 - DNS Lookup*         10 - IP-Locator 
-2 - Whois Lookup*       11 - Traceroute*
-3 - GeoIP Lookup*       12 - Host DNS Finder
-4 - Subnet Lookup*      13 - Reverse DNS Lookup*
-5 - TCP Port Scanner*   14 - Collection Email
-6 - Extract Links*      15 - Install & Update 
-7 - Zone Transfer*      16 - Test Ping*
-8 - HTTP Header*        17 - DNS (A) Record*
-9 - AS Lookup*          18 - DNS Shared Servers*
-                        19 - Reverse IP Lookup*
+0 - My IP               10 - IP-Locator 
+1 - DNS Lookup*         11 - Traceroute*
+2 - Whois Lookup*       12 - Host DNS Finder
+3 - GeoIP Lookup*       13 - Reverse DNS Lookup*
+4 - Subnet Lookup*      14 - Collection Email
+5 - TCP Port Scanner*   15 - Install & Update
+6 - Extract Links*      16 - Test Ping* 
+7 - Zone Transfer*      17 - DNS (A) Record*
+8 - HTTP Header*        18 - DNS Shared Servers*
+9 - AS Lookup*          19 - Reverse IP Lookup*
 99 - About me
 100 - Exit
 ------------------------------------------------------
 ''')
 
 slowprint("This is scripted for python version 3.7")
-slowprint("                                                ")
 menu()
 
 def ext():
@@ -86,7 +85,14 @@ def ext():
 def  select():
   try:
     joker = input("[x] Enter your option :")
-    if joker == '1':
+    if joker == '0' :
+      print(f"Your public IP address is {ip}")
+      hostname = socket.gethostname()    
+      IPAddr = socket.gethostbyname(hostname)    
+      print(f"Your Computer Name is: {hostname}")    
+      print(f"Your local IP address is: {IPAddr}")  
+      ext()
+    elif joker == '1':
       dz = input('[x] Enter Domain name :')
       whois = "https://api.hackertarget.com/dnslookup/?q=" + dz
       dev = urlopen(whois).read()
@@ -175,7 +181,6 @@ def  select():
     elif joker == '15':
       print ("[x] Option is out of service\n")
       ext()
-
     elif joker == '16':
       dz = input('[x] Enter IP Address :')
       whois = "https://api.hackertarget.com/nping/?q=" + dz
@@ -183,7 +188,6 @@ def  select():
       print ("[x] API Response :\n")
       print (dev.decode("utf-8"))
       ext()
-
     elif joker == '17':
       dz = input('[x] Enter Domain name :')
       whois = "https://api.hackertarget.com/hostsearch/?q=" + dz
@@ -205,18 +209,13 @@ def  select():
       print ("[x] API Response :\n")
       print (dev.decode("utf-8"))
       ext()
-
     elif joker == '99':
       fastprint("------------------------------------------------------")
       fastprint("Name    : Devploit V3+")
       fastprint("------------------------------------------------------")
-      fastprint("Version : 3.1")
+      fastprint("Version : 3.x")
       fastprint("------------------------------------------------------")
-      fastprint("Author  : Mohamed Shafi - tweaks Real-4w")
-      fastprint("------------------------------------------------------")
-      fastprint("Github  : https://github.com/SHAFIT ")
-      fastprint("------------------------------------------------------")
-      fastprint("Website : https://shafis.in")
+      fastprint("Author  : Mohamed Shafi & tweaks Real-4w")
       fastprint("------------------------------------------------------")
       ext() 
     elif joker == '100':
@@ -224,7 +223,7 @@ def  select():
     elif joker == "exit":
       print ("Good-bye!!")
     else:
-      print ("Not in the menu. try again")
+      print ("Not in the menu. Please try again.")
       asd = input()
       select()
   except(KeyboardInterrupt):
