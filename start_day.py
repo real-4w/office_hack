@@ -1,5 +1,5 @@
 import webbrowser, yaml, time,ctypes, time, shlex, subprocess
-import w_vda, win32gui
+import w_vda, win32gui, os
 from cli_badges import badge
 #===========================================================================================================
 def ProcessYAML (yaml_file) :
@@ -9,6 +9,8 @@ def ProcessYAML (yaml_file) :
         debug = y_data['debug']
         if debug == True : print("YAML file:\n", y_data)
     return (y_data)  
+def kill_by_process_name_shell(name):
+        os.system("taskkill /f /im " + name)
 #===========================================================================================================
 yaml_data = ProcessYAML('tools.yaml')                                     #yaml settings are global variables
 debug = yaml_data['debug']                                                #debug mode?
@@ -58,4 +60,5 @@ if __name__ == "__main__":                                                    #o
     Desk1Badge = badge("Browser 1 URLs opened",str(len(desk1)), messagebg='green',messagecolor='black')
     Desk2Badge = badge("Browser 2 URLs opened",str(len(desk2)), messagebg='blue')
     print(Desk1Badge, Desk2Badge)
-    quit()
+    kill_by_process_name_shell("python.exe")
+    
