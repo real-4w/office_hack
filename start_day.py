@@ -58,3 +58,4 @@ if __name__ == "__main__":                                                    #o
     Desk1Badge = badge("Browser 1 URLs opened",str(len(desk1)), messagebg='green',messagecolor='black')
     Desk2Badge = badge("Browser 2 URLs opened",str(len(desk2)), messagebg='blue')
     print(Desk1Badge, Desk2Badge)
+    quit()
