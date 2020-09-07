@@ -42,8 +42,9 @@ status, messages = imap.select("INBOX")
 messages = int(messages[0])
 if debug == True :
     print(f"Number of messages: {messages}")
-for i in range(messages-4, messages-N-4, -1):
+for i in range(messages, messages-N, -1):
     # fetch the email message by ID
+    if debug == True : print(i)
     res, msg = imap.fetch(str(i), "(RFC822)")
     for response in msg:
         if isinstance(response, tuple):
