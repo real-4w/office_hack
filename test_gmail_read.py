@@ -93,16 +93,17 @@ for i in range(messages, messages-N, -1):
                     # print only text email parts
                     print(body)
             if content_type == "text/html":
+                print("HTML")
                 # if it's HTML, create a new HTML file and open it in browser
-                if not os.path.isdir(subject):
-                    # make a folder for this email (named after the subject)
-                    os.mkdir(subject)
-                filename = f"{subject[:50]}.html"
-                filepath = os.path.join(subject, filename)
+                #if not os.path.isdir(subject):
+                #    # make a folder for this email (named after the subject)
+                #    os.mkdir(subject)
+                #filename = f"{subject[:50]}.html"
+                #filepath = os.path.join(subject, filename)
                 # write the file
-                open(filepath, "w").write(body)
+                #open(filepath, "w").write(body)
                 # open in the default browser
-                webbrowser.open(filepath)
+                #webbrowser.open(filepath)
 
             print("="*100)
 
