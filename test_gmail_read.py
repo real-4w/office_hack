@@ -6,7 +6,7 @@
 #username : <your email>@gmail.com
 #password : <yourpassword | yourapplicationpassword>
 #==============================================================================================================
-import imaplib, email, yaml
+import imaplib, email, yaml, sys
 from email.header import decode_header
 import webbrowser, os
 
@@ -17,32 +17,31 @@ def ProcessYAML (yaml_file) :
         debug = y_data['debug']
         if debug == True : print("YAML file:\n", y_data)
     return (y_data, debug) 
-yaml_data, debug = ProcessYAML('kl.yaml')                                     #yaml settings are global variables
-
-# account credentials
-username = yaml_data['username']
+def parse_mailbox(data):
+    flags, b, c = data.partition(' ')                                         # searches and splits the string into a tuple containing three elements before, string, after
+    separator, b, name = c.partition(' ')
+    return (flags, separator.replace('"', ''), name.replace('"', ''))         
+yaml_data, debug = ProcessYAML('kl.yaml')                                   # yaml settings are global variables
+username = yaml_data['username']                                            # account credentials
 password = yaml_data['password']
-
 if debug == True :
     print("Email", username, password)
+no_mes = 3                                                                  # number of top emails to fetch
+imap = imaplib.IMAP4_SSL("imap.gmail.com")                                  # create an IMAP4 class with SSL, use your email provider's IMAP server
+imap.login(username, password)                                              # authenticate
 
-# number of top emails to fetch
-N = 3
-
-# create an IMAP4 class with SSL, use your email provider's IMAP server
-imap = imaplib.IMAP4_SSL("imap.gmail.com")
-# authenticate
-imap.login(username, password)
-
-# select a mailbox (in this case, the inbox mailbox)
-# use imap.list() to get the list of mailboxes
-status, messages = imap.select("INBOX")
-
-# total number of emails
-messages = int(messages[0])
+if debug == True :
+    #res, label = imap.list("[Gmail]")
+    res, label = imap.list()                                                # use imap.list() to get the list of mailboxes
+    if res == 'OK':
+        for mbox in label :
+            flags, separator, name = parse_mailbox(bytes.decode(mbox))      # decode a stream of bytes to a string object,
+            print(name)
+status, messages = imap.select("INBOX")                                     # select a mailbox (in this case, the inbox mailbox)
+messages = int(messages[0])                                                 # total number of emails
 if debug == True :
     print(f"Number of messages: {messages}")
-for i in range(messages, messages-N, -1):
+for i in range(messages, messages - no_mes, -1):
     # fetch the email message by ID
     if debug == True : print(i)
     res, msg = imap.fetch(str(i), "(RFC822)")
@@ -57,9 +56,9 @@ for i in range(messages, messages-N, -1):
                 subject = subject.decode()
             # email sender
             from_ = msg.get("From")
-            print("Subject:", subject)
             print("From:", from_)
-            # if the email message is multipart
+            print("Subject:", subject)
+                        # if the email message is multipart
             #if msg.is_multipart():
             #    # iterate over email parts
             #    for part in msg.walk():
