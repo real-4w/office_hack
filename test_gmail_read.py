@@ -26,6 +26,7 @@ username = yaml_data['username']                                            # ac
 password = yaml_data['password']
 if debug == True :
     print("Email", username, password)
+
 no_mes = 3                                                                  # number of top emails to fetch
 imap = imaplib.IMAP4_SSL("imap.gmail.com")                                  # create an IMAP4 class with SSL, use your email provider's IMAP server
 imap.login(username, password)                                              # authenticate
@@ -37,14 +38,15 @@ if debug == True :
         for mbox in label :
             flags, separator, name = parse_mailbox(bytes.decode(mbox))      # decode a stream of bytes to a string object,
             print(name)
+        input("Press any key to continue.")
 status, messages = imap.select("INBOX")                                     # select a mailbox (in this case, the inbox mailbox)
 messages = int(messages[0])                                                 # total number of emails
 if debug == True :
     print(f"Number of messages: {messages}")
+    print(messages)
 for i in range(messages, messages - no_mes, -1):
-    # fetch the email message by ID
     if debug == True : print(i)
-    res, msg = imap.fetch(str(i), "(RFC822)")
+    res, msg = imap.fetch(str(i), "(RFC822)")                               # fetch the email message by ID
     for response in msg:
         if isinstance(response, tuple):
             # parse a bytes email into a message object
