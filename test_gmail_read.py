@@ -60,40 +60,40 @@ for i in range(messages, messages-N, -1):
             print("Subject:", subject)
             print("From:", from_)
             # if the email message is multipart
-            if msg.is_multipart():
-                # iterate over email parts
-                for part in msg.walk():
-                    # extract content type of email
-                    content_type = part.get_content_type()
-                    content_disposition = str(part.get("Content-Disposition"))
-                    try:
-                        # get the email body
-                        body = part.get_payload(decode=True).decode()
-                    except:
-                        pass
-                    if content_type == "text/plain" and "attachment" not in content_disposition:
-                        # print text/plain emails and skip attachments
-                        print(body)
-                    elif "attachment" in content_disposition:
-                        # download attachment
-                        filename = part.get_filename()
-                        if filename:
-                            if not os.path.isdir(subject):
-                                # make a folder for this email (named after the subject)
-                                os.mkdir(subject)
-                            filepath = os.path.join(subject, filename)
-                            # download attachment and save it
-                            open(filepath, "wb").write(part.get_payload(decode=True))
-            else:
-                # extract content type of email
-                content_type = msg.get_content_type()
-                # get the email body
-                body = msg.get_payload(decode=True).decode()
-                if content_type == "text/plain":
-                    # print only text email parts
-                    print(body)
-            if content_type == "text/html":
-                print("HTML")
+            #if msg.is_multipart():
+            #    # iterate over email parts
+            #    for part in msg.walk():
+            #        # extract content type of email
+            #        content_type = part.get_content_type()
+            #        content_disposition = str(part.get("Content-Disposition"))
+            #        try:
+            #            # get the email body
+            #            body = part.get_payload(decode=True).decode()
+            #        except:
+            #            pass
+            #        if content_type == "text/plain" and "attachment" not in content_disposition:
+            #            # print text/plain emails and skip attachments
+            #            print(body)
+            #        elif "attachment" in content_disposition:
+            #            # download attachment
+            #            filename = part.get_filename()
+            #            if filename:
+            #                if not os.path.isdir(subject):
+            #                    # make a folder for this email (named after the subject)
+            #                    os.mkdir(subject)
+            #                filepath = os.path.join(subject, filename)
+            #                # download attachment and save it
+            #                open(filepath, "wb").write(part.get_payload(decode=True))
+            #else:
+            #    # extract content type of email
+            #    content_type = msg.get_content_type()
+            #    # get the email body
+            #    body = msg.get_payload(decode=True).decode()
+            #    if content_type == "text/plain":
+            #        # print only text email parts
+            #        print(body)
+            #if content_type == "text/html":
+            #    print("HTML")
                 # if it's HTML, create a new HTML file and open it in browser
                 #if not os.path.isdir(subject):
                 #    # make a folder for this email (named after the subject)
