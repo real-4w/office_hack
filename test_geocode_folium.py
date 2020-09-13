@@ -22,3 +22,14 @@ m = folium.Map(location=[location.latitude, location.longitude])
 #from IPython.display import display
 #myMap = folium.Map(location=[location.latitude, location.longitude], zoom_start=12)
 #display(myMap)
+
+#def inline_map(m, width=650, height=500):
+#    """Takes a folium instance and embed HTML."""
+#    m._build_map()
+#    srcdoc = m.HTML.replace('"', '&quot;')
+#    embed = HTML('<iframe srcdoc="{}" '
+#                 'style="width: {}px; height: {}px; '
+#                 'border: none"></iframe>'.format(srcdoc, width, height))
+#    return embed
+
+#inline_map(m)
