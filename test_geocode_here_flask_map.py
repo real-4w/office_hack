@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def map_func():
-	return render_template('map.html')
+	return render_template('map.html', lat = -36.8484769, long = 174.7652662)
 if __name__ == '__main__':
     app.run(debug = True)    
-
