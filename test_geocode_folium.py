@@ -19,17 +19,3 @@ m = folium.Map(location=[location.latitude, location.longitude])
 # trying to create a html wrapper as per https://stackoverflow.com/questions/36969991/folium-map-not-displaying
 # https://ocefpaf.github.io/python4oceanographers/blog/2014/05/05/folium/
 
-#from IPython.display import display
-#myMap = folium.Map(location=[location.latitude, location.longitude], zoom_start=12)
-#display(myMap)
-
-#def inline_map(m, width=650, height=500):
-#    """Takes a folium instance and embed HTML."""
-#    m._build_map()
-#    srcdoc = m.HTML.replace('"', '&quot;')
-#    embed = HTML('<iframe srcdoc="{}" '
-#                 'style="width: {}px; height: {}px; '
-#                 'border: none"></iframe>'.format(srcdoc, width, height))
-#    return embed
-
-#inline_map(m)
