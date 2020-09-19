@@ -1,5 +1,5 @@
 debug : False
-from_address : Auckland
+from_address : Auckland, New Zealand
 to_address : Wellington, New Zealand
 region : AU
 vehicle_type : PRIVATE
