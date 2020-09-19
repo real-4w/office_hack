@@ -10,6 +10,7 @@ open_browser.py         : Script to open pages on browser. URL's in script, see 
 start_day.py            : Launches a number of tabs in browsers &  fires a executbles up. Config in tools.yaml
 w_logger.py             : Creates a log file with a copy of the console output.
 w_vda.py                : Wrapper for 'VirtualDesktopAccessor.dll' || 64 bits python only
+waze_api.py             : Call Waze API to find travel distance & times. Addresses in waze_api.yaml
 
 **WIP**
 

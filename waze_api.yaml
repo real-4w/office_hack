@@ -1,5 +1,5 @@
 debug : False
-from_address : 157b Hobsonville Road, Auckland, New Zealand
-to_address : 10 Kitchener Street , Auckland, New Zealand
+from_address : Auckland
+to_address : Wellington, New Zealand
 region : AU
 vehicle_type : PRIVATE
