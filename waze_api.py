@@ -4,6 +4,7 @@ import WazeRouteCalculator
 import logging, yaml, datetime
 import os
 from time import sleep
+from tkinter import *
 #============================================================================================================================
 def screen_clear() :                                                                    # The screen clear function
    if os.name == 'posix':                                                               # for mac and linux(here, os.name is 'posix')
