@@ -11,7 +11,7 @@ start_day.py            : Launches a number of tabs in browsers &  fires a execu
 w_logger.py             : Creates a log file with a copy of the console output.
 w_vda.py                : Wrapper for 'VirtualDesktopAccessor.dll' || 64 bits python only
 waze_api.py             : Call Waze API to find travel distance & times. Addresses in waze_api.yaml
-
+waze_api_tkinter.py     : Call Waze API and keep an eye on travel times. Addresses in waze_api.yaml
 **WIP**
 
 
