@@ -69,7 +69,7 @@ class UpdateLabel():
             for key in all_routes_out:                                                           # dictionary 
                 route_txt = route_txt + f"Route {key}, distance {all_routes_out[key][1]:.2f} km, duration {all_routes_out[key][0]:.2f} min.\n"
             self.route_var.set(route_txt)
-            self.ctr = 300
+            self.ctr = 60
             self.win.after(1000, self.updater)
 #============================================================================================================================
 if __name__ == "__main__":                                                           # only run when this is called by itself and not imported 
