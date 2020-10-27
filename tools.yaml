@@ -12,7 +12,7 @@ desk2:
 execs1:
   - C:\Program Files (x86)\Microsoft Office\Office16\OUTLOOK.EXE
   - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+  - C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
 execs2:
   - C:\Users\vandersw\AppData\Local\Programs\Microsoft VS Code\Code.exe
   - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-  
